@@ -316,11 +316,15 @@ return {
             if return_val == 0 then
               local hash = j:result()[1]
               if hash then
-                vim.fn.setreg('+', hash)
-                vim.notify('Copied commit hash: ' .. hash, vim.log.levels.INFO)
+                vim.schedule(function()
+                  vim.fn.setreg('+', hash)
+                  vim.notify('Copied commit hash: ' .. hash, vim.log.levels.INFO)
+                end)
               end
             else
-              vim.notify('Failed to get commit hash', vim.log.levels.ERROR)
+              vim.schedule(function()
+                vim.notify('Failed to get commit hash', vim.log.levels.ERROR)
+              end)
             end
           end,
         }):start()
@@ -342,12 +346,16 @@ return {
                 local hash = result:match('^(%x+)')
                 if hash then
                   local short_hash = hash:sub(1, 7)
-                  vim.fn.setreg('+', short_hash)
-                  vim.notify('Copied commit hash: ' .. short_hash, vim.log.levels.INFO)
+                  vim.schedule(function()
+                    vim.fn.setreg('+', short_hash)
+                    vim.notify('Copied commit hash: ' .. short_hash, vim.log.levels.INFO)
+                  end)
                 end
               end
             else
-              vim.notify('Failed to get commit hash for line', vim.log.levels.ERROR)
+              vim.schedule(function()
+                vim.notify('Failed to get commit hash for line', vim.log.levels.ERROR)
+              end)
             end
           end,
         }):start()
