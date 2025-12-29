@@ -167,7 +167,7 @@ vim.o.scrolloff = 10
 vim.o.confirm = true
 
 -- Configure ripgrep as the default grep program
-if vim.fn.executable('rg') == 1 then
+if vim.fn.executable 'rg' == 1 then
   vim.o.grepprg = 'rg --vimgrep --smart-case --hidden --glob "!.git/"'
   vim.o.grepformat = '%f:%l:%c:%m'
 end
@@ -451,7 +451,7 @@ require('lazy').setup({
           live_grep = {
             additional_args = function()
               return { '--hidden', '--glob', '!.git/*' }
-            end
+            end,
           },
         },
         extensions = {
@@ -718,17 +718,17 @@ require('lazy').setup({
             ['rust-analyzer'] = {
               diagnostics = {
                 enable = false,
-              }
-            }
-          }
+              },
+            },
+          },
         },
-        
+
         -- Python language server
         pyright = {},
-        
+
         -- Bash language server
         bashls = {},
-        
+
         -- YAML language server
         yamlls = {
           settings = {
@@ -737,10 +737,10 @@ require('lazy').setup({
             },
           },
         },
-        
+
         -- Terraform/HCL language server
         terraformls = {},
-        
+
         -- Lua language server (already configured)
         lua_ls = {
           -- cmd = { ... },
@@ -955,10 +955,10 @@ require('lazy').setup({
           functions = {},
           variables = {},
           -- Background styles. Can be "dark", "transparent" or "normal"
-          sidebars = "transparent", -- style for sidebars, see below
-          floats = "transparent", -- style for floating windows
+          sidebars = 'transparent', -- style for sidebars, see below
+          floats = 'transparent', -- style for floating windows
         },
-        sidebars = { "qf", "help", "vista_kind", "terminal", "packer" }, -- Set a darker background on sidebar-like windows
+        sidebars = { 'qf', 'help', 'vista_kind', 'terminal', 'packer' }, -- Set a darker background on sidebar-like windows
         day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
         hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
         dim_inactive = false, -- dims inactive windows
@@ -1015,10 +1015,27 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
+    main = 'nvim-treesitter.config', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'rust', 'python', 'yaml', 'hcl', 'terraform' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        'rust',
+        'python',
+        'yaml',
+        'hcl',
+        'terraform',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -1064,7 +1081,7 @@ require('lazy').setup({
   { import = 'plugins.kubernetes' },
   { import = 'plugins.tmux' },
   { import = 'plugins.leetcode' },
-  
+
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
@@ -1098,8 +1115,8 @@ require('lazy').setup({
 })
 
 -- Load additional configurations
-require('configurations.keymap')
-require('configurations.theme')
+require 'configurations.keymap'
+require 'configurations.theme'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
