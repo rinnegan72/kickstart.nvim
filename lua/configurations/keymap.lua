@@ -1,6 +1,6 @@
 -- Additional custom keymaps
 -- This file contains extra keymaps that don't belong to specific plugins
-
+vim.keymap.set('n', '<leader>ld', '<cmd>LazyDocker<cr>', { desc = '[L]azy[d]ocker' })
 -- Better indenting in visual mode
 vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and keep selection' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and keep selection' })
@@ -34,16 +34,16 @@ vim.keymap.set('n', '<leader>h', '<cmd>nohlsearch<cr>', { desc = 'Clear search h
 
 -- Ripgrep shortcuts
 vim.keymap.set('n', '<leader>rg', function()
-  local word = vim.fn.expand('<cword>')
+  local word = vim.fn.expand '<cword>'
   vim.cmd('grep! ' .. word)
-  vim.cmd('copen')
+  vim.cmd 'copen'
 end, { desc = '[R]ip[g]rep current word' })
 
 vim.keymap.set('n', '<leader>rG', function()
-  local word = vim.fn.input('Ripgrep: ')
+  local word = vim.fn.input 'Ripgrep: '
   if word ~= '' then
     vim.cmd('grep! ' .. word)
-    vim.cmd('copen')
+    vim.cmd 'copen'
   end
 end, { desc = '[R]ip[G]rep search' })
 
