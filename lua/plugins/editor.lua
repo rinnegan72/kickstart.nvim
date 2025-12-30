@@ -89,7 +89,7 @@ return {
           ignore = true,
           show_on_dirs = true,
           show_on_open_dirs = true,
-          timeout = 400,
+          timeout = 0,
         },
         modified = {
           enable = true,
