@@ -1,6 +1,5 @@
 -- Additional custom keymaps
 -- This file contains extra keymaps that don't belong to specific plugins
-vim.keymap.set('n', '<leader>ld', '<cmd>LazyDocker<cr>', { desc = '[L]azy[d]ocker' })
 -- Better indenting in visual mode
 vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and keep selection' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and keep selection' })
